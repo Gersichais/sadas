@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa e Voce Design | Construction & Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary-color: #2C3E50; /* Structural Steel Blue */
+            --secondary-color: #D35400; /* Brick/Clay Orange */
+            --bg-light: #F4F6F7;
+            --bg-white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-muted: #636E72;
+            
+            --font-head: 'Oswald', sans-serif;
+            --font-body: 'Barlow', sans-serif;
+            
+            --container-width: 1200px;
+            --section-padding: 100px 0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =========================================
+           2. UTILITIES
+           ========================================= */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-subtitle {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--secondary-color);
+            color: var(--bg-white);
+            font-family: var(--font-head);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        /* =========================================
+           3. HEADER
+           ========================================= */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bg-white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ecf0f1;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* =========================================
+           4. HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--bg-white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            color: var(--bg-white);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            color: #ecf0f1;
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .hero .btn:hover {
+            background-color: transparent;
+            color: var(--bg-white);
+            border-color: var(--bg-white);
+        }
+
+        /* =========================================
+           5. ABOUT US
+           ========================================= */
+        .about {
+            padding: var(--section-padding);
+            background-color: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 4px;
+            box-shadow: 20px 20px 0 var(--bg-light);
+        }
+
+        /* =========================================
+           6. SERVICES
+           ========================================= */
+        .services {
+            padding: var(--section-padding);
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 40px;
+            border-bottom: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           7. ADVANTAGES
+           ========================================= */
+        .advantages {
+            padding: var(--section-padding);
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+        }
+
+        .advantages .section-subtitle {
+            color: var(--secondary-color);
+        }
+
+        .advantages h2, .advantages h3 {
+            color: var(--bg-white);
+        }
+
+        .advantages p {
+            color: #bdc3c7;
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .adv-item {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* =========================================
+           8. PROCESS
+           ========================================= */
+        .process {
+            padding: var(--section-padding);
+            background-color: var(--bg-white);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: var(--font-head);
+            font-size: 4rem;
+            color: rgba(211, 84, 0, 0.15);
+            font-weight: 700;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .step-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 20px;
+        }
+
+        /* =========================================
+           9. CONTACT
+           ========================================= */
+        .contact {
+            padding: var(--section-padding);
+            background-color: var(--bg-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            background: var(--bg-white);
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .contact-info {
+            padding-right: 40px;
+            border-right: 1px solid #eee;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h5 {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--secondary-color);
+            background: #fff;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--primary-color);
+            color: #bdc3c7;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid, .contact-container, .adv-grid { grid-template-columns: 1fr; }
+            .contact-info { border-right: none; border-bottom: 1px solid #eee; padding-right: 0; padding-bottom: 40px; margin-bottom: 40px; }
+            .process-steps { flex-direction: column; }
+            .nav-wrapper { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">CASA E VOCE <span>DESIGN</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">The Firm</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#advantages">Why Us</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Constructing Excellence <br> in João Pessoa</h1>
+            <p>Casa e Voce Design delivers robust nonresidential construction solutions. We merge engineering precision with architectural vision to build the future of Paraíba.</p>
+            <a href="#contact" class="btn">View Our Capabilities</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <span class="section-subtitle">Our Profile</span>
+                <h2 class="section-title">Bridging Design & Durability</h2>
+                <p>CASA E VOCE DESIGN LTDA is a premier construction firm located in João Pessoa, Paraíba. Led by Gersica Thais Borges Do Rego Barros, we specialize in nonresidential and industrial building projects that require exacting standards.</p>
+                <p>Our name—"Casa e Voce Design"—reflects our core philosophy: balancing structural functionality with a personalized design approach. We understand that even industrial and commercial buildings must resonate with the people who use them.</p>
+                <p>From large-scale industrial complexes to commercial renovations, we bring a dedicated team of engineers, architects, and builders to every site, ensuring projects are delivered on time, within budget, and built to last.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Construction Site Planning">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">What We Do</span>
+                <h2 class="section-title">Construction Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#127981;</div>
+                    <h3>Industrial Construction</h3>
+                    <p>We execute complex industrial projects, including warehouses, factories, and logistics centers. Our focus is on load-bearing capacity, operational flow, and safety compliance.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">&#128188;</div>
+                    <h3>Commercial Development</h3>
+                    <p>From office buildings to retail spaces, we provide end-to-end construction services. We handle the structural framework, systems integration, and high-quality finishing.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">&#9998;</div>
+                    <h3>Design & Planning</h3>
+                    <p>Our integrated design team works with clients before ground is broken to ensure feasibility. We create architectural plans that optimize space and reduce construction costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Why Choose Us</span>
+                <h2 class="section-title">The Casa e Voce Standard</h2>
+            </div>
+
+            <div class="adv-grid">
+                <div class="adv-item">
+                    <h3>Paraíba Expertise</h3>
+                    <p>Based in João Pessoa, we have deep knowledge of local suppliers, terrain, and zoning regulations. We navigate the logistics of the region better than outside contractors.</p>
+                </div>
+                <div class="adv-item">
+                    <h3>Design-Build Approach</h3>
+                    <p>By housing design and construction capabilities under one roof, we eliminate communication gaps. This results in faster project completion and fewer change orders.</p>
+                </div>
+                <div class="adv-item">
+                    <h3>Principal Involvement</h3>
+                    <p>Gersica Thais Borges Do Rego Barros oversees key project milestones personally. You get the attention of a boutique firm with the capabilities of a large construction company.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Workflow</span>
+                <h2 class="section-title">From Concept to Concrete</h2>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>We meet to understand your operational needs and architectural vision, establishing a clear scope and budget.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h3>Construction</h3>
+                        <p>Our teams mobilize on-site. We manage all phases from foundation pouring to structural erection with rigorous safety protocols.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h3>Delivery</h3>
+                        <p>We complete final inspections, systems testing, and finishing touches before handing over the keys to your new facility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Start Your Project</h2>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h5>Headquarters</h5>
+                        <p>JOAO PESSOA, PARAIBA<br>Brazil</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h5>Electronic Mail</h5>
+                        <p>info@casaevocedesign.info</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h5>Key Principal</h5>
+                        <p>Gersica Thais Borges Do Rego Barros</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <input type="text" placeholder="Your Name / Company" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="text" placeholder="Project Type (e.g. Industrial, Office)">
+                        <textarea placeholder="Describe your construction needs..."></textarea>
+                        <button type="submit" class="btn">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CASA E VOCE DESIGN LTDA. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Nonresidential Building Construction & Design</p>
+        </div>
+    </footer>
+
+</body>
+</html>
